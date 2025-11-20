@@ -1,0 +1,33 @@
+---
+title: "4: Change Color"
+description: Change Color
+---
+
+<VTSequence sequence={["OSC", "4", ";", "Pcolor number", ";", "Pcolor specification", "ST"]} />
+
+## Color Numbers
+
+Numbers 0-7 refer to the standard ANSI colors. Numbers 8-15 refer to the
+bright variants of the standard ANSI colors.
+
+## Color Specification
+
+### Query
+
+<VTSequence sequence={["?"]}  />
+
+If a color specification is a question mark (`?`), Ghostty will send a control sequence to the application
+with the current value of that color.
+
+### RGB
+
+<VTSequence sequence={["rgb:", "Pr", "/", "Pg", "/", "Pb"]}  />
+
+`r`, `g`, and `b` can be hexadecimal values that are one to four digits long.
+
+### RGB Intensity
+
+<VTSequence sequence={["rgbi:", "Pr", "/", "Pg", "/", "Pb"]}  />
+
+`r`, `g`, and `b` are floating point numbers between 0.0 and 1.0 that represent
+the intensity of that color channel.

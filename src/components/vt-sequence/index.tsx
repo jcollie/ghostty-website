@@ -63,8 +63,13 @@ function parseSequence(sequence: string | string[]) {
 
   return sequenceArray.map((value) => {
     // Pn is a param with name n.
-    const param = value.match(/\P(\w)/)?.[1];
+    const param = value.match(/\P(\w+)/)?.[1];
     if (param) return { value: param };
+
+    if (value == "ST") {
+      return { value, hex: "0x07 or 0x1b 0x5c" };
+
+    }
 
     // Use special lookup if it exists
     const specialChar = special[value];

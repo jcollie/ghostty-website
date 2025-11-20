@@ -419,6 +419,58 @@
               "title": "Shift-Escape Behavior (XTSHIFTESCAPE)"
             }
           ]
+        },
+        {
+          "type": "folder",
+          "path": "/osc",
+          "title": "OSC",
+          "children": [
+            {
+              "type": "link",
+              "path": "/0",
+              "title": "0: Change Window Title and Icon Name"
+            },
+            {
+              "type": "link",
+              "path": "/1",
+              "title": "1: Change Icon Name"
+            },
+            {
+              "type": "link",
+              "path": "/2",
+              "title": "2: Change Window Title"
+            },
+            {
+              "type": "link",
+              "path": "/3",
+              "title": "3: Set X Property"
+            },
+            {
+              "type": "link",
+              "path": "/4",
+              "title": "4: Change Color"
+            },
+            {
+              "type": "link",
+              "path": "/5",
+              "title": "5: Change Special Color"
+            },
+            {
+              "type": "link",
+              "path": "/9",
+              "title": "9: iTerm2 Desktop Notifications or ConEmu Extensions"
+            },
+            {
+              "type": "link",
+              "path": "/133",
+              "title": "133: Semantic Prompts"
+            },
+            {
+              "type": "link",
+              "path": "/777",
+              "title": "777: rxvt-unicode Extensions"
+            }
+          ]
         }
       ]
     },

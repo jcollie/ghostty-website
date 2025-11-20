@@ -1,0 +1,19 @@
+---
+title: rxvt-unicode Extensions
+description: rxvt-unicode Extensions
+---
+
+[`rxvt-unicode`](https://software.schmorp.de/pkg/rxvt-unicode.html) uses OSC 777
+to define a number of extensions:
+
+<VTSequence sequence={["OSC", "777", ";", "Pname", ";", "Pdata", "ST"]} />
+
+`name` is the name of the extension, and `data` is data supplied to the
+extension. Ghostty only supports one extension, `notify`:
+
+<VTSequence sequence={["OSC", "777", ";", "notify", ";", "Ptitle", ";", "Pbody", ";", "ST"]} />
+
+The `notify` extension is used to send a desktop notification. `title` and
+`body` will be used as the title and the body of the desktop notification. Note
+that there is no escaping of the values performed so including a semicolon in
+the notification is impossible.

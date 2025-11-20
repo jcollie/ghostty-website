@@ -1,0 +1,105 @@
+---
+title: iTerm2 Desktop Notifications or ConEmu Extensions
+description: iTerm2 Desktop Notifications or ConEmu Extensions
+---
+
+## iTerm2
+### iTerm 2 Desktop Notifications
+<VTSequence sequence={["OSC", "9", ";", "Pbody", "ST"]} />
+
+`body` will be the body of the notification.
+
+Sends a desktop notification with `body` as the body of the notification. Because of conflicts between iTerm 2's usage
+of OSC 9 and ConEmu's usage, it is impossible to send desktop notifications using OSC 9 that have prefixes that match
+one of the ConEmu extensions.
+
+## ConEmu
+
+These OSC sequences were originally defined by
+[ConEmu](https://conemu.github.io/). The ConEmu [progress
+reports](#conemu-progress-report) have recently gained poularity after several
+terminal emulators (including Ghostty) added support. Many applications have also been adding support for sending
+progress reports.
+
+Note that while Ghostty does not implement most of these extensions, they _are_
+parsed so that the maximum compatibility between iTerm2 desktop notifications
+and the ConEmu extensions can be maintained.
+
+For more information, see [the original ConEmu documentation for the extensions.](https://conemu.github.io/en/AnsiEscapeCodes.html#ConEmu_specific_OSC)
+
+### ConEmu Sleep
+<VTSequence sequence={["OSC", "9", ";", "1", ";", "Pms", "ST"]} unimplemented="true" />
+
+Sleeps for `ms` milliseconds.
+
+### ConEmu GUI Message Box
+<VTSequence sequence={["OSC", "9", ";", "2", ";", "Ptext", "ST"]} unimplemented="true" />
+
+Shows `text` in a GUI message box.
+
+### ConEmu Tab Title
+<VTSequence sequence={["OSC", "9", ";", "3", ";", "Ptext", "ST"]} unimplemented="true" />
+
+Changes the tab title to `text`. An empty value may be passed to reset the tab
+title to the default.
+
+### ConEmu Progress Report
+<VTSequence sequence={["OSC", "9", ";", "4", ";", "Pstate", ";", "Pprogress", "ST"]} />
+
+`progress` may be any decimal value from 0-100 inclusive. `state` can be one of the following values:
+- `0` - Remove the progress bar.
+- `1` - Set the progress bar state to `progress`.
+- `2` - Set the progress bar to an error state. `progress` is optional.
+- `3` - Set the progress bar to an indeterminate state. The progress bar will "pulse" to indicate that
+  there is activity but that the amount of progress is indeterminate.
+- `4` - Set the progress bar to a paused state. `progress` is optional.
+
+### ConEmu Wait
+<VTSequence sequence={["OSC", "9", ";", "5", "ST"]} unimplemented="true" />
+
+Wait for the user to press `ENTER`, `SPACE`, or `ESC`. Sets the environment
+variable `ConEmuWaitKey` to `ENTER`, `SPACE` or `ESC`.
+
+## ConEmu GUI Macro
+<VTSequence sequence={["OSC", "9", ";", "6", ";", "Pmacro", "ST"]} unimplemented="true" />
+
+Execute a ConEmu GUI macro. Sets the environment variable `ConEmuMacroResult` on exit.
+
+## ConEmu Command
+<VTSequence sequence={["OSC", "9", ";", "7", ";", "Pcommand", "ST"]} unimplemented="true" />
+
+Run command `command`.
+
+## ConEmu Get Environment Variable
+<VTSequence sequence={["OSC", "9", ";", "8", ";", "Pname", "ST"]} unimplemented="true" />
+
+Output the value of the environment variable `name`.
+
+## ConEmu Report Current Working Directory
+<VTSequence sequence={["OSC", "9", ";", "9", ";", "Pcwd", "ST"]} />
+
+Reports the current working directory. Note that it is recommended to use OSC 7 instead.
+
+## ConEmu XTerm Keyboard and Output Emulation Control
+<VTSequence sequence={["OSC", "9", ";", "10", "ST"]} unimplemented="true" />
+<VTSequence sequence={["OSC", "9", ";", "10", ";", "Pn", "ST"]} unimplemented="true" />
+
+Note that Ghostty uses [`fixterms`](https://www.leonerd.org.uk/hacks/fixterms/) keyboard encoding by default. Advanced
+programs should enable the [Kitty Keyboard Protocol](https://sw.kovidgoyal.net/kitty/keyboard-protocol/) for
+
+`n` may be:
+- `0` - Turn off XTerm keyboard and output emulation.
+- `1` - Turn on XTerm keyboard and output emulation. This is the default if `n` is not specified.
+- `2` - Turn off XTerm output emulation.
+- `3` - Turn on XTerm output emulation.
+
+## ConEmu Comment
+<VTSequence sequence={["OSC", "9", ";", "11", ";", "Pcomment", "ST"]} />
+
+A comment, which is ignored.
+
+## ConEmu Report Prompt Start
+<VTSequence sequence={["OSC", "9", ";", "12", "ST"]} />
+
+Use the current cursor position as the start of the prompt. It is recommended
+that applications switch to using [OSC 133 Semantic Prompts](./133) instead.

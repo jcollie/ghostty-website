@@ -1,0 +1,41 @@
+---
+title: OSC 133 Semantic Prompts
+description: Semantic Prompts
+---
+
+## Prompt Start
+<VTSequence sequence={["OSC", "133", ";", "A", ";", "Poptions", "ST"]} />
+
+The cursor position marks the start of a prompt. `options` is an optional list of
+key-value pairs separated by semicolons. The following keys are supported:
+
+- `aid` -
+- `redraw` - '0' or '1'
+- `k` - marks the type of prompt. The default is `primary` if unspecified, or if an unknown value
+  is provided.
+  - `c` - continuation
+  - `s` - secondary
+  - `r` - right
+  - `i` - primary
+
+Unknown options will be ignored.
+
+## Prompt End
+<VTSequence sequence={["OSC", "133", ";", "B", ";", "Poptions", "ST"]} />
+
+The cursor position marks the end of a prompt, and the beginning of user input.
+There are no options defined. Unknown options will be ignored.
+
+## End of Input
+
+<VTSequence sequence={["OSC", "133", ";", "C", ";", "Poptions", "ST"]} />
+
+The cursor position marks the end of user input, and the beginning of command
+output. There are no options defined. Unknown options will be ignored.
+
+## End of Command
+
+<VTSequence sequence={["OSC", "133", ";", "D", ";", "Pexit code", "ST"]} />
+
+The cursor position marks the end of command output. The optional `exit code` is
+a number from 0-255 that indicates what exit code the command returned.

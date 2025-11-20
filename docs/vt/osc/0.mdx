@@ -1,0 +1,9 @@
+---
+title: 0: Change Window Title and Icon Name
+description: Change Window Title and Icon Name
+---
+
+<VTSequence sequence={["OSC", "0", ";", "Ptitle", "ST"]} />
+
+Changes the window title to `title`. Changing the icon name is not supported by
+Ghostty so that aspect of this OSC is ignored.
