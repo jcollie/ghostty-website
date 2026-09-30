@@ -12,6 +12,10 @@ in xterm and has no DEC equivalent.
 If `n` is omitted, `n` defaults to `0`. If more than one parameter is
 given, this sequence does nothing.
 
+Like [DECRQCRA](/docs/vt/csi/decrqcra), this sequence is ignored unless the
+[`vt-checksum-report`](/docs/config/reference#vt-checksum-report)
+configuration is enabled.
+
 `n` is a set of bits. Each bit that is set turns off one part of the
 checksum calculation that DEC terminals perform, as below. Bits beyond
 these are ignored.
@@ -47,8 +51,7 @@ than the DEC 8-bit value. The right half of a wide character is skipped
 instead of counting as `0x1B`, and combining characters are never counted.
 
 The selected calculation lasts until the terminal is reset. A full reset
-([RIS](/docs/vt/esc/ris)) or a soft reset (DECSTR) returns to the
-calculation set by the
+([RIS](/docs/vt/esc/ris)) returns to the calculation set by the
 [`vt-checksum-extension`](/docs/config/reference#vt-checksum-extension)
 configuration, which defaults to the DEC calculation.
 

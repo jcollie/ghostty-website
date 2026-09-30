@@ -26,7 +26,8 @@ It originated on the DEC VT420.
 Ghostty only replies to this sequence if the
 [`vt-checksum-report`](/docs/config/reference#vt-checksum-report)
 configuration is enabled. By default, the sequence is ignored and no reply
-is sent.
+is sent. [XTCHECKSUM](/docs/vt/csi/xtchecksum), which changes how the
+checksum is calculated, is ignored as well.
 
 A program can request the checksum of a single cell at a time. By trying
 every possible value of that cell, it can read back everything on the
