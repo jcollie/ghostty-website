@@ -26,7 +26,7 @@ of 8 spaces is most common.
 
 ## Standards
 
-CBT is defined by [ECMA-48][ecma48], which moves the cursor to the `n`th
+CBT is defined by [ECMA-48][ecma48-cbt], which moves the cursor to the `n`th
 preceding tabstop and gives `n` a default of 1. ECMA-48 does not say what
 happens when there are fewer than `n` tabstops to the left of the cursor.
 The [VT510 manual][vt510-cbt] fills that gap: the cursor stops at the
@@ -125,8 +125,8 @@ printf "A"
 ## References
 
 - [ECMA-48: Control Functions for Coded Character Sets][ecma48], 5th
-  edition, Ecma International, June 1991. Section 8.3.7, "CBT - Cursor
-  Backward Tabulation", page 34.
+  edition, Ecma International, June 1991. Section 8.3.7,
+  ["CBT - Cursor Backward Tabulation" on page 34][ecma48-cbt].
 - [CBT—Cursor Backward Tabulation][vt510-cbt], VT510 Video Terminal
   Programmer Information, Digital Equipment Corporation.
 - [DEC STD 070 Video Systems Reference Manual][std070], revision H,
@@ -141,7 +141,8 @@ printf "A"
 - [esctest2's CBT tests](https://github.com/ThomasDickey/esctest2/blob/master/esctest/tests/cbt.py),
   which check that CBT ignores the left margin when origin mode is off.
 
-[ecma48]: https://ecma-international.org/publications-and-standards/standards/ecma-48/
+[ecma48]: https://archive.org/details/ecma-48-5th-edition-june-1991
+[ecma48-cbt]: https://archive.org/details/ecma-48-5th-edition-june-1991/page/n47/mode/1up
 [vt510-cbt]: https://vt100.net/docs/vt510-rm/CBT.html
 [std070]: https://archive.org/details/bitsavers_decstandar0VideoSystemsReferenceManualDec91_74264381
 [std070-tabs]: https://archive.org/details/bitsavers_decstandar0VideoSystemsReferenceManualDec91_74264381/page/n319/mode/1up
